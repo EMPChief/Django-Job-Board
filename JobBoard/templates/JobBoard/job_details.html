@@ -1,0 +1,96 @@
+{% extends 'JobBoard/_base.html' %}
+{% load humanize %}
+
+{% block content %}
+    <div class="container flex flex-col items-center justify-center max-w-full p-4 mx-auto mt-4 bg-green-200 rounded-lg shadow-lg sm:p-8 sm:mt-8 dark:bg-gray-800">
+
+        <h2 class="mb-4 text-3xl font-bold text-blue-900 md:text-4xl lg:text-5xl sm:mb-6">
+            {{ posting.title|title }}
+        </h2>
+
+        <div class="mb-6 space-y-4">
+            <div class="flex flex-col items-center">
+                <span class="text-lg font-bold text-blue-700 md:text-xl lg:text-2xl dark:text-gray-300">
+                    📍 Location:
+                </span>
+                <span class="text-lg text-blue-700 break-all whitespace-normal md:text-xl lg:text-2xl dark:text-gray-300">
+                    {{ posting.location }}
+                </span>
+            </div>
+
+            <div class="flex flex-col items-center">
+                <span class="text-lg font-bold text-blue-700 md:text-xl lg:text-2xl dark:text-gray-300">
+                    🏢 Company:
+                </span>
+                <span class="text-lg text-blue-700 break-all whitespace-normal md:text-xl lg:text-2xl dark:text-gray-300">
+                    {{ posting.company }}
+                </span>
+            </div>
+
+            <div class="flex flex-col items-center">
+                <span class="text-lg font-bold text-blue-700 md:text-xl lg:text-2xl dark:text-gray-300">
+                    💼 Job Type:
+                </span>
+                <span class="text-lg text-blue-700 break-all whitespace-normal md:text-xl lg:text-2xl dark:text-gray-300">
+                    {{ posting.job_type|title }}
+                </span>
+            </div>
+
+            <div class="flex flex-col items-center">
+                <span class="text-lg font-bold text-blue-700 md:text-xl lg:text-2xl dark:text-gray-300">
+                    💰 Salary:
+                </span>
+                <span class="text-lg text-blue-700 break-all whitespace-normal md:text-xl lg:text-2xl dark:text-gray-300">
+                    ${{ posting.salary|intcomma }}
+                </span>
+            </div>
+
+            <div class="flex flex-col items-center">
+                <span class="text-lg font-bold text-blue-700 md:text-xl lg:text-2xl dark:text-gray-300">
+                    📅 Published:
+                </span>
+                <span class="text-lg text-blue-700 break-all whitespace-normal md:text-xl lg:text-2xl dark:text-gray-300">
+                    {{ posting.published_at|naturaltime }}
+                </span>
+            </div>
+
+            <div class="flex flex-col items-center">
+                <span class="text-lg font-bold text-blue-700 md:text-xl lg:text-2xl dark:text-gray-300">
+                    🌐 Active:
+                </span>
+                <span class="text-lg text-blue-700 break-all whitespace-normal md:text-xl lg:text-2xl dark:text-gray-300">
+                    {% if posting.is_active %}Yes{% else %}No{% endif %}
+                </span>
+            </div>
+
+            <div class="flex flex-col items-center">
+                <span class="text-lg font-bold text-blue-700 md:text-xl lg:text-2xl dark:text-gray-300">
+                    ⏰ Application Deadline:
+                </span>
+                <span class="text-lg text-blue-700 break-all whitespace-normal md:text-xl lg:text-2xl dark:text-gray-300">
+                    {% if posting.application_deadline %}{{ posting.application_deadline|naturaltime }}{% else %}Not specified{% endif %}
+                </span>
+            </div>
+
+            <div class="flex flex-col items-center">
+                <span class="text-lg font-bold text-blue-700 md:text-xl lg:text-2xl dark:text-gray-300">
+                    📝 Description:
+                </span>
+                <span class="max-w-full text-lg text-blue-700 whitespace-pre-wrap md:text-xl lg:text-2xl dark:text-gray-300">
+{{ posting.description|default:"N/A" }}
+                </span>
+            </div>
+
+            <div class="flex flex-col items-center">
+                <span class="text-lg font-bold text-blue-700 md:text-xl lg:text-2xl dark:text-gray-300">
+                    🎓 Qualifications:
+                </span>
+                <span class="max-w-full text-lg text-blue-700 whitespace-pre-wrap md:text-xl lg:text-2xl dark:text-gray-300">
+{{ posting.qualifications|default:"N/A" }}
+                </span>
+            </div>
+
+        </div>
+
+    </div>
+{% endblock content %}

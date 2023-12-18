@@ -1,0 +1,8 @@
+django
+django-tailwind
+django-crispy-forms
+crispy-tailwind
+django-admin-interface
+npm
+
+
